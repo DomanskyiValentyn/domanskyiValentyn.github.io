@@ -340,6 +340,7 @@ section #network_dashboard #network_dashboard_contacts .network_dashboard_contac
 }
 
 section #network_dashboard #network_dashboard_contacts .network_dashboard_contact.focus {
+  background-color: white;
   -webkit-box-shadow: 0px 5px 5px rgba(190, 200, 212, 0.2), 0px -5px 5px rgba(224, 224, 224, 0.15);
           box-shadow: 0px 5px 5px rgba(190, 200, 212, 0.2), 0px -5px 5px rgba(224, 224, 224, 0.15);
 }
