@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SWAPI</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+      <div id="app">
+          <section v-if="errored">
+              <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+            </section>
+          
+            <section v-else>
+              <div class="loading" v-if="loading"><span class="logo">@</span></div>
+              <div v-else class="swapi">
+                <span class="logo">@</span>
+                <input v-model="name" placeholder="name">
+                <div class="swapi_result">
+                    <div v-for="swapi in filterResults" class="swapi_item">
+                        <ul>
+                          <li class="swapi_result_name">{{ swapi.name }}</li>
+                          <ul calss="swapi_result_list_data">
+                            <li>Рост: {{swapi.height}}см</li>
+                            <li>Маса: {{swapi.mass}}кг</li>
+                            <li>Год рождения: {{swapi.birth_year}} </li>
+                            <li>Родная планета: {{swapi.homeworld.name}}</li>
+                            <li>Пол: {{swapi.gender}}</li>
+                            <li>Раса: {{swapi.species.name}}</li>
+                            <p>Фильмы:</p>
+                            <ul>
+                                <li class="swapi_result_list_data_films list" v-for="film in swapi.films"><a :href="film" target="_blank">{{ film }}</a></li>
+                            </ul> 
+                            <p>Транспортные средства:</p>
+                            <ul>
+                                <li class="swapi_result_list_data_vehicles list" v-for="vehicle in swapi.vehicles"><a :href="vehicle">{{ vehicle }}</a></li>
+                            </ul>
+                            <p>Звездолеты:</p>
+                            <ul>
+                                <li class="swapi_result_list_data_starships list" v-for="starship in swapi.starships"><a :href="starship">{{ starship }}</a></li>
+                            </ul>
+                          </ul>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+            </section>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
